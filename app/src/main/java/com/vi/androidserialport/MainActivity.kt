@@ -1,11 +1,10 @@
 package com.vi.androidserialport
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.vi.vioserial.NormalSerial
 import com.vi.vioserial.listener.OnNormalDataListener
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * 快速使用
@@ -17,13 +16,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), OnNormalDataListener {
 
     var isOpenSerial = false //串口是否打开 Is the serial port open?
+    lateinit var mEtCK: android.widget.EditText
+    lateinit var mEtBTL: android.widget.EditText
+    lateinit var mBtnConnect: android.widget.Button
+    lateinit var mEtInput: android.widget.EditText
+    lateinit var mBtnSend: android.widget.Button
+    lateinit var mTvSendData: android.widget.TextView
+    lateinit var mTvReviData: android.widget.TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        initView()
         initClick()
-
     }
 
     override fun onDestroy() {
@@ -31,6 +37,16 @@ class MainActivity : AppCompatActivity(), OnNormalDataListener {
         //【移除数据监听 remove listener】
         NormalSerial.instance().removeDataListener(this)
         NormalSerial.instance().close()
+    }
+
+    private fun initView() {
+        mEtCK = findViewById(R.id.mEtCK)
+        mEtBTL = findViewById(R.id.mEtBTL)
+        mBtnConnect = findViewById(R.id.mBtnConnect)
+        mEtInput = findViewById(R.id.mEtInput)
+        mBtnSend = findViewById(R.id.mBtnSend)
+        mTvSendData = findViewById(R.id.mTvSendData)
+        mTvReviData = findViewById(R.id.mTvReviData)
     }
 
     private fun initClick() {
