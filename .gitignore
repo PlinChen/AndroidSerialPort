@@ -61,3 +61,5 @@ vioserial/.cxx/Debug
 vioserial/.cxx/tools/debug
 .idea*
 vioserial/.cxx/ndk_locator_record*
+vioserial/.cxx/RelWithDebInfo*
+vioserial/.cxx/tools/release
